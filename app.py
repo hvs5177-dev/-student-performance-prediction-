@@ -1,5 +1,3 @@
-Replace your entire file with this:
-
 :::writing{variant="standard" id="appfix3"}
 import streamlit as st
 import numpy as np
@@ -50,3 +48,4 @@ if st.button("Predict Performance"):
     st.write("Prediction:", result)
     st.write("Risk Level:", risk)
 :::
+
