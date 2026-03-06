@@ -31,10 +31,13 @@ if st.button("Predict Performance"):
     lower = round(predicted_marks - 4)
     upper = round(predicted_marks + 4)
 
-    if predicted_marks >= 40:
-        result = "PASS"
-    else:
-        result = "FAIL"
+    # logical rule check
+if math < 20 or science < 20 or english < 20:
+    result = "FAIL"
+elif predicted_marks >= 40:
+    result = "PASS"
+else:
+    result = "FAIL"
 
     if predicted_marks >= 75:
         risk = "Low Risk"
@@ -62,3 +65,4 @@ if st.button("Predict Performance"):
     ax.set_title("Student Performance Overview")
 
     st.pyplot(fig)
+
