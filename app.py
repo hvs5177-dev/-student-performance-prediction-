@@ -3,7 +3,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 # Load trained model
-model = load_model("student_marks_prediction_model.h5")
+model = load_model("student_marks_prediction_model.h5", compile=False)
 
 st.title("Student Performance Prediction System")
 st.write("Enter student details to predict performance")
@@ -46,6 +46,7 @@ if st.button("Predict Performance"):
     st.write("Marks Range:", lower, "-", upper)
     st.write("Prediction:", result)
     st.write("Risk Level:", risk)
+
 
 
 
