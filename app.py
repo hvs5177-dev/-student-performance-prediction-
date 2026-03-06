@@ -10,8 +10,6 @@ model = load_model("student_marks_prediction_model.h5", compile=False)
 st.title("Student Performance Prediction System")
 st.write("Enter student details to predict performance")
 
-# Inputs
-
 age = st.number_input("Age", 10, 25, 18)
 study_hours = st.number_input("Study Hours Per Day", 0.0, 12.0)
 attendance = st.number_input("Attendance Percentage", 0.0, 100.0)
@@ -21,10 +19,11 @@ science = st.number_input("Science Score", 0.0, 100.0)
 english = st.number_input("English Score", 0.0, 100.0)
 previous = st.number_input("Previous Year Score", 0.0, 100.0)
 
-# Predict Button
+predict_button = st.button("Predict Performance")
 
-if st.button("Predict Performance"):
-    
+if predict_button:
+
+```
 input_data = np.array([[age, study_hours, attendance, math, science, english, previous]])
 input_data = input_data.reshape(1, input_data.shape[1], 1)
 
@@ -34,8 +33,8 @@ predicted_marks = float(prediction[0][0])
 lower = round(predicted_marks - 4)
 upper = round(predicted_marks + 4)
 
-# Academic rule check
-if min(math, science, english) < 20:
+# Academic rule
+if math < 20 or science < 20 or english < 20:
     result = "FAIL"
     risk = "High Risk"
 
@@ -59,7 +58,6 @@ st.write("Marks Range:", lower, "-", upper)
 st.write("Prediction:", result)
 st.write("Risk Level:", risk)
 
-# Performance Chart
 st.subheader("Performance Chart")
 
 subjects = ["Math", "Science", "English", "Predicted"]
@@ -72,4 +70,4 @@ ax.set_ylabel("Marks")
 ax.set_title("Student Performance Overview")
 
 st.pyplot(fig)
-
+```
