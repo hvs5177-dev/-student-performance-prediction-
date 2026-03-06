@@ -21,7 +21,7 @@ previous = st.number_input("Previous Year Score", 0.0, 100.0)
 
 if st.button("Predict Performance"):
 
-```
+
 input_data = np.array([[age, study_hours, attendance, math, science, english, previous]])
 input_data = input_data.reshape(1, input_data.shape[1], 1)
 
@@ -49,4 +49,5 @@ st.write("Predicted Marks:", round(predicted_marks, 2))
 st.write("Marks Range:", lower, "-", upper)
 st.write("Prediction:", result)
 st.write("Risk Level:", risk)
-```
+
+
