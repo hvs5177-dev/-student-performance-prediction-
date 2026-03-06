@@ -47,7 +47,9 @@ if st.button("Predict Performance"):
     st.write("Marks Range:", lower, "-", upper)
     st.write("Prediction:", result)
     st.write("Risk Level:", risk)
-    # Performance Chart
+    st.write("Risk Level:", risk)
+
+# Performance Chart
 st.subheader("Performance Chart")
 
 subjects = ["Math", "Science", "English", "Predicted"]
@@ -60,9 +62,4 @@ ax.set_ylabel("Marks")
 ax.set_title("Student Performance Overview")
 
 st.pyplot(fig)
-
-
-
-
-
-
+   
