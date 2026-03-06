@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 
 # Load trained model
@@ -46,6 +47,20 @@ if st.button("Predict Performance"):
     st.write("Marks Range:", lower, "-", upper)
     st.write("Prediction:", result)
     st.write("Risk Level:", risk)
+    # Performance Chart
+st.subheader("Performance Chart")
+
+subjects = ["Math", "Science", "English", "Predicted"]
+scores = [math, science, english, predicted_marks]
+
+fig, ax = plt.subplots()
+ax.bar(subjects, scores)
+
+ax.set_ylabel("Marks")
+ax.set_title("Student Performance Overview")
+
+st.pyplot(fig)
+
 
 
 
