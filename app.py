@@ -24,9 +24,8 @@ previous = st.number_input("Previous Year Score", 0.0, 100.0)
 # Predict Button
 
 if st.button("Predict Performance"):
-
-```
-input_data = np.array([[age, study_hours, attendance, math, science, english, previous]])
+    
+    input_data = np.array([[age, study_hours, attendance, math, science, english, previous]])
 input_data = input_data.reshape(1, input_data.shape[1], 1)
 
 prediction = model.predict(input_data)
@@ -74,3 +73,4 @@ ax.set_title("Student Performance Overview")
 
 st.pyplot(fig)
 ```
+
