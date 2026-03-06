@@ -7,6 +7,7 @@ from tensorflow.keras.models import load_model
 model = load_model("student_marks_prediction_model.h5", compile=False)
 
 st.title("Student Performance Prediction System")
+
 st.write("Enter student details to predict performance")
 
 age = st.number_input("Age", 10, 25, 18)
@@ -47,19 +48,17 @@ if st.button("Predict Performance"):
     st.write("Marks Range:", lower, "-", upper)
     st.write("Prediction:", result)
     st.write("Risk Level:", risk)
-    st.write("Risk Level:", risk)
 
-# Performance Chart
-st.subheader("Performance Chart")
+    # Performance Chart
+    st.subheader("Performance Chart")
 
-subjects = ["Math", "Science", "English", "Predicted"]
-scores = [math, science, english, predicted_marks]
+    subjects = ["Math", "Science", "English", "Predicted"]
+    scores = [math, science, english, predicted_marks]
 
-fig, ax = plt.subplots()
-ax.bar(subjects, scores)
+    fig, ax = plt.subplots()
+    ax.bar(subjects, scores)
 
-ax.set_ylabel("Marks")
-ax.set_title("Student Performance Overview")
+    ax.set_ylabel("Marks")
+    ax.set_title("Student Performance Overview")
 
-st.pyplot(fig)
-   
+    st.pyplot(fig)
