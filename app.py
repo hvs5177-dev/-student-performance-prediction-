@@ -1,13 +1,14 @@
+Replace your entire file with this:
+
+:::writing{variant="standard" id="appfix3"}
 import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 
 # Load trained model
-
 model = load_model("student_marks_prediction_model.h5")
 
 st.title("Student Performance Prediction System")
-
 st.write("Enter student details to predict performance")
 
 age = st.number_input("Age", 10, 25, 18)
@@ -21,33 +22,31 @@ previous = st.number_input("Previous Year Score", 0.0, 100.0)
 
 if st.button("Predict Performance"):
 
+    input_data = np.array([[age, study_hours, attendance, math, science, english, previous]])
+    input_data = input_data.reshape(1, input_data.shape[1], 1)
 
-input_data = np.array([[age, study_hours, attendance, math, science, english, previous]])
-input_data = input_data.reshape(1, input_data.shape[1], 1)
+    prediction = model.predict(input_data)
 
-prediction = model.predict(input_data)
+    predicted_marks = float(prediction[0][0])
 
-predicted_marks = float(prediction[0][0])
+    lower = round(predicted_marks - 4)
+    upper = round(predicted_marks + 4)
 
-lower = round(predicted_marks - 4)
-upper = round(predicted_marks + 4)
+    if predicted_marks >= 40:
+        result = "PASS"
+    else:
+        result = "FAIL"
 
-if predicted_marks >= 40:
-    result = "PASS"
-else:
-    result = "FAIL"
+    if predicted_marks >= 75:
+        risk = "Low Risk"
+    elif predicted_marks >= 50:
+        risk = "Medium Risk"
+    else:
+        risk = "High Risk"
 
-if predicted_marks >= 75:
-    risk = "Low Risk"
-elif predicted_marks >= 50:
-    risk = "Medium Risk"
-else:
-    risk = "High Risk"
-
-st.subheader("Prediction Result")
-st.write("Predicted Marks:", round(predicted_marks, 2))
-st.write("Marks Range:", lower, "-", upper)
-st.write("Prediction:", result)
-st.write("Risk Level:", risk)
-
-
+    st.subheader("Prediction Result")
+    st.write("Predicted Marks:", round(predicted_marks, 2))
+    st.write("Marks Range:", lower, "-", upper)
+    st.write("Prediction:", result)
+    st.write("Risk Level:", risk)
+:::
