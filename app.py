@@ -1,4 +1,4 @@
-:::writing{variant="standard" id="appfix3"}
+writing{variant="standard" id="appfix3"}
 import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -47,5 +47,6 @@ if st.button("Predict Performance"):
     st.write("Marks Range:", lower, "-", upper)
     st.write("Prediction:", result)
     st.write("Risk Level:", risk)
-:::
+
+
 
