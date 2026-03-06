@@ -72,5 +72,3 @@ ax.set_ylabel("Marks")
 ax.set_title("Student Performance Overview")
 
 st.pyplot(fig)
-```
-
