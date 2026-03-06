@@ -21,26 +21,26 @@ science = st.number_input("Science Score", 0.0, 100.0)
 english = st.number_input("English Score", 0.0, 100.0)
 previous = st.number_input("Previous Year Score", 0.0, 100.0)
 
+# Button
+
 if st.button("Predict Performance"):
-    
+
+```
 # Prepare input for model
 input_data = np.array([[age, study_hours, attendance, math, science, english, previous]])
 input_data = input_data.reshape(1, input_data.shape[1], 1)
 
+# Predict marks
 prediction = model.predict(input_data)
 predicted_marks = float(prediction[0][0])
 
 lower = round(predicted_marks - 4)
 upper = round(predicted_marks + 4)
 
-# DEBUG LINE (remove later)
-st.write("Debug values:", math, science, english)
-
 # Academic rule check
 if min(math, science, english) < 20:
     result = "FAIL"
     risk = "High Risk"
-
 elif predicted_marks >= 40:
     result = "PASS"
 
@@ -50,7 +50,6 @@ elif predicted_marks >= 40:
         risk = "Medium Risk"
     else:
         risk = "High Risk"
-
 else:
     result = "FAIL"
     risk = "High Risk"
@@ -76,4 +75,3 @@ ax.set_title("Student Performance Overview")
 
 st.pyplot(fig)
 ```
-
