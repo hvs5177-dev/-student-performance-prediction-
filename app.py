@@ -21,16 +21,14 @@ science = st.number_input("Science Score", 0.0, 100.0)
 english = st.number_input("English Score", 0.0, 100.0)
 previous = st.number_input("Previous Year Score", 0.0, 100.0)
 
-# Button
+# Predict Button
 
 if st.button("Predict Performance"):
 
 ```
-# Prepare input for model
 input_data = np.array([[age, study_hours, attendance, math, science, english, previous]])
 input_data = input_data.reshape(1, input_data.shape[1], 1)
 
-# Predict marks
 prediction = model.predict(input_data)
 predicted_marks = float(prediction[0][0])
 
@@ -41,6 +39,7 @@ upper = round(predicted_marks + 4)
 if min(math, science, english) < 20:
     result = "FAIL"
     risk = "High Risk"
+
 elif predicted_marks >= 40:
     result = "PASS"
 
@@ -50,11 +49,11 @@ elif predicted_marks >= 40:
         risk = "Medium Risk"
     else:
         risk = "High Risk"
+
 else:
     result = "FAIL"
     risk = "High Risk"
 
-# Display results
 st.subheader("Prediction Result")
 st.write("Predicted Marks:", round(predicted_marks, 2))
 st.write("Marks Range:", lower, "-", upper)
